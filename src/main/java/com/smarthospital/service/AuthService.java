@@ -17,9 +17,6 @@ import com.smarthospital.util.ValidationUtil;
 
 import java.util.logging.Logger;
 
-/**
- * Service orchestrating user authentication, password verification, and session context initialization.
- */
 public class AuthService {
 
     private static final Logger LOGGER = Logger.getLogger(AuthService.class.getName());
@@ -42,7 +39,12 @@ public class AuthService {
             throw new ApplicationException("Please select your assigned role.");
         }
 
+        // Try lookup with given role first; fallback to direct role code if needed
         User user = userDAO.getUserByEmailAndRole(email, roleName);
+        if (user == null && roleName.equalsIgnoreCase("Hospital Administrator")) {
+            user = userDAO.getUserByEmailAndRole(email, "ADMIN");
+        }
+
         if (user == null) {
             auditDAO.log(null, "LOGIN_FAILED", "Failed login attempt for " + email + " with role " + roleName, ipAddress);
             throw new ApplicationException("Invalid email, password, or role combination.");
@@ -53,9 +55,9 @@ public class AuthService {
             throw new ApplicationException("Your account is " + user.getStatus().toLowerCase() + ". Please contact hospital administration.");
         }
 
-        // Check BCrypt hash first; fall back to plain-text match for demo/seeded data
+        // Fallback: match BCrypt hash OR plain text (for demo accounts)
         boolean matches = PasswordUtil.checkPassword(plainPassword, user.getPasswordHash());
-        if (!matches && plainPassword.equals(user.getPasswordHash())) {
+        if (!matches && plainPassword != null && plainPassword.equals(user.getPasswordHash())) {
             matches = true;
         }
 
