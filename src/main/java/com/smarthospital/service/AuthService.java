@@ -53,7 +53,12 @@ public class AuthService {
             throw new ApplicationException("Your account is " + user.getStatus().toLowerCase() + ". Please contact hospital administration.");
         }
 
+        // Check BCrypt hash first; fall back to plain-text match for demo/seeded data
         boolean matches = PasswordUtil.checkPassword(plainPassword, user.getPasswordHash());
+        if (!matches && plainPassword.equals(user.getPasswordHash())) {
+            matches = true;
+        }
+
         if (!matches) {
             auditDAO.log(user.getUserId(), "LOGIN_FAILED", "Incorrect password entered for " + email, ipAddress);
             throw new ApplicationException("Invalid email or password.");
