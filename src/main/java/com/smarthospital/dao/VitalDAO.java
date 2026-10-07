@@ -167,4 +167,61 @@ public class VitalDAO {
         }
         return list;
     }
+
+    /**
+     * Atomically creates both user account and nurse profile inside a transaction.
+     */
+    public boolean createNurseWithUser(Nurse nurse, com.smarthospital.model.User user) {
+        String insertUserSql = "INSERT INTO users (role_id, full_name, email, password_hash, phone, status) VALUES (4, ?, ?, ?, ?, 'ACTIVE')";
+        String insertNurseSql = "INSERT INTO nurses (user_id, department_id, qualification, shift) VALUES (?, ?, ?, ?)";
+
+        Connection conn = null;
+        try {
+            conn = DBConnection.getConnection();
+            conn.setAutoCommit(false);
+
+            int userId;
+            try (PreparedStatement psUser = conn.prepareStatement(insertUserSql, Statement.RETURN_GENERATED_KEYS)) {
+                psUser.setString(1, user.getFullName());
+                psUser.setString(2, user.getEmail().trim().toLowerCase());
+                psUser.setString(3, user.getPasswordHash());
+                psUser.setString(4, user.getPhone());
+                psUser.executeUpdate();
+
+                try (ResultSet rs = psUser.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        userId = rs.getInt(1);
+                    } else {
+                        conn.rollback();
+                        return false;
+                    }
+                }
+            }
+
+            try (PreparedStatement psNurse = conn.prepareStatement(insertNurseSql, Statement.RETURN_GENERATED_KEYS)) {
+                psNurse.setInt(1, userId);
+                if (nurse.getDepartmentId() != null && nurse.getDepartmentId() > 0) {
+                    psNurse.setInt(2, nurse.getDepartmentId());
+                } else {
+                    psNurse.setNull(2, java.sql.Types.INTEGER);
+                }
+                psNurse.setString(3, nurse.getQualification() != null ? nurse.getQualification() : "Registered Nurse (RN)");
+                psNurse.setString(4, nurse.getShift() != null ? nurse.getShift() : "MORNING");
+                psNurse.executeUpdate();
+            }
+
+            conn.commit();
+            return true;
+        } catch (SQLException e) {
+            if (conn != null) {
+                try { conn.rollback(); } catch (SQLException ex) { LOGGER.log(Level.SEVERE, "Rollback failed", ex); }
+            }
+            LOGGER.log(Level.SEVERE, "Error creating nurse account: " + user.getEmail(), e);
+            throw new DatabaseException("Failed to register nurse account.", e);
+        } finally {
+            if (conn != null) {
+                try { conn.setAutoCommit(true); conn.close(); } catch (SQLException e) { LOGGER.log(Level.WARNING, "Error closing connection", e); }
+            }
+        }
+    }
 }

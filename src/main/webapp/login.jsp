@@ -95,6 +95,16 @@
                 </div>
             </c:if>
 
+            <c:if test="${param.msg eq 'registered'}">
+                <div class="alert alert-success alert-dismissible fade show d-flex align-items-center mb-4 small" role="alert">
+                    <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                    <div>
+                        Account registered successfully! Please enter your password to sign in.
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </c:if>
+
             <!-- Login Form -->
             <form action="${pageContext.request.contextPath}/login" method="POST" autocomplete="off">
                 <!-- Role Select -->
@@ -102,14 +112,15 @@
                     <label for="roleSelect" class="form-label small fw-bold text-secondary">
                         <i class="bi bi-shield-check text-primary me-1"></i> Authorized Role
                     </label>
-                    <select class="form-select py-2" id="roleSelect" name="role" required>
-                        <option value="" disabled ${empty selectedRole ? 'selected' : ''}>-- Select Portal Role --</option>
-                        <option value="ADMIN" ${selectedRole eq 'ADMIN' ? 'selected' : ''}>Hospital Administrator</option>
-                        <option value="DOCTOR" ${selectedRole eq 'DOCTOR' ? 'selected' : ''}>Attending Doctor</option>
-                        <option value="RECEPTIONIST" ${selectedRole eq 'RECEPTIONIST' ? 'selected' : ''}>Front Desk Receptionist</option>
-                        <option value="NURSE" ${selectedRole eq 'NURSE' ? 'selected' : ''}>Clinical Nurse</option>
-                        <option value="PATIENT" ${selectedRole eq 'PATIENT' ? 'selected' : ''}>Patient Portal</option>
+                    <select class="form-select py-2" id="roleSelect" name="role">
+                        <option value="" ${empty selectedRole and empty param.role ? 'selected' : ''}>-- Auto-Detect Portal Role (Any Account) --</option>
+                        <option value="ADMIN" ${selectedRole eq 'ADMIN' or param.role eq 'ADMIN' ? 'selected' : ''}>Hospital Administrator</option>
+                        <option value="DOCTOR" ${selectedRole eq 'DOCTOR' or param.role eq 'DOCTOR' ? 'selected' : ''}>Attending Doctor</option>
+                        <option value="RECEPTIONIST" ${selectedRole eq 'RECEPTIONIST' or param.role eq 'RECEPTIONIST' ? 'selected' : ''}>Front Desk Receptionist</option>
+                        <option value="NURSE" ${selectedRole eq 'NURSE' or param.role eq 'NURSE' ? 'selected' : ''}>Clinical Nurse</option>
+                        <option value="PATIENT" ${selectedRole eq 'PATIENT' or param.role eq 'PATIENT' ? 'selected' : ''}>Patient Portal</option>
                     </select>
+                    <div class="form-text text-muted" style="font-size: 0.75rem;">Leave on Auto-Detect or choose your portal role.</div>
                 </div>
 
                 <!-- Email Input -->
@@ -118,7 +129,8 @@
                         <i class="bi bi-envelope-at text-primary me-1"></i> Email Address
                     </label>
                     <input type="email" class="form-control py-2" id="emailInput" name="email" 
-                           placeholder="e.g. admin@smarthospital.com" value="${enteredEmail}" required>
+                           placeholder="e.g. yourname@gmail.com or admin@smarthospital.com" 
+                           value="${not empty enteredEmail ? enteredEmail : param.email}" required>
                 </div>
 
                 <!-- Password Input -->
@@ -143,9 +155,16 @@
                     </a>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold rounded-3 shadow-sm mb-4">
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold rounded-3 shadow-sm mb-3">
                     <i class="bi bi-box-arrow-in-right me-1"></i> Log In to Portal
                 </button>
+
+                <div class="text-center mb-4">
+                    <span class="small text-muted">New user? </span>
+                    <a href="${pageContext.request.contextPath}/register" class="small fw-bold text-primary text-decoration-none">
+                        <i class="bi bi-person-plus-fill me-1"></i>Register as Doctor, Patient, Receptionist, or Nurse
+                    </a>
+                </div>
             </form>
 
             <!-- One-Click Quick Login Demo Chips for Evaluator -->

@@ -59,8 +59,11 @@
             </a>
             <div class="d-flex align-items-center gap-2">
                 <span class="text-white-50 d-none d-md-inline small me-3"><i class="bi bi-telephone-fill text-danger me-1"></i> Emergency: 108 / +91 (11) 2345-6789</span>
+                <a href="${pageContext.request.contextPath}/register" class="btn btn-outline-light px-3 rounded-pill fw-semibold">
+                    <i class="bi bi-person-plus-fill me-1"></i> Register
+                </a>
                 <a href="${pageContext.request.contextPath}/login.jsp" class="btn btn-primary px-4 rounded-pill fw-semibold">
-                    <i class="bi bi-person-fill-lock me-1"></i> Hospital Staff & Patient Portal
+                    <i class="bi bi-person-fill-lock me-1"></i> Sign In
                 </a>
             </div>
         </div>
@@ -84,8 +87,11 @@
                         <a href="${pageContext.request.contextPath}/login.jsp" class="btn btn-light btn-lg px-4 rounded-pill fw-bold text-dark">
                             <i class="bi bi-door-open-fill me-1"></i> Secure Role Login
                         </a>
+                        <a href="${pageContext.request.contextPath}/register" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-semibold">
+                            <i class="bi bi-person-plus-fill me-1"></i> Register New User
+                        </a>
                         <a href="#portals" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-semibold">
-                            Explore Roles & Features
+                            Explore Roles
                         </a>
                     </div>
                 </div>
