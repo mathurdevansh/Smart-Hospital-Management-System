@@ -7,11 +7,30 @@
 [![Tomcat](https://img.shields.io/badge/Apache%20Tomcat-10.1-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black)](https://tomcat.apache.org/)
 [![Cloud DB](https://img.shields.io/badge/Aiven%20Cloud-MySQL%20SSL-FF4D4D?style=for-the-badge&logo=aiven&logoColor=white)](https://aiven.io/)
 
-> **Academic Program:** Project Based Learning (Java Web PBL 2026-27)  
-> **Team:** Team Nobita (`PBL2627-AI&DS-A-031;`)  
-> **Mentor:** Er. Ram Babu Buri  
-> **Repository:** [https://github.com/mathurdevansh/Smart-Hospital-Management-System](https://github.com/mathurdevansh/Smart-Hospital-Management-System)  
-> **Reports Hub:** [Detailed 13-Week Reports Directory](reports/README.md)
+> **Institution:** [Arya College of Engineering & I.T., Jaipur](https://www.aryacollege.in)  
+> **Department:** Department of Artificial Intelligence & Data Science  
+> **Affiliation:** Rajasthan Technical University (RTU), Kota  
+> **Academic Program:** Project Based Learning (Java Web PBL 2026–27)  
+> **Project Registration Code:** `PBL2627-AI&DS-A-031`  
+> **Project Guide:** Er. Ram Babu Buri  
+> **Head of Department:** Dr. Ashok Kumar Kajla  
+> **Team:** Team Nobita (5 Members | 574 Total Logged Hours)  
+> **Repository:** [https://github.com/mathurdevansh/Smart-Hospital-Management-System](https://github.com/mathurdevansh/Smart-Hospital-Management-System)
+
+---
+
+## 🎓 Academic Deliverables & Mentor Review Portal
+
+For academic evaluation, project review, and viva examination, all official documents are accessible directly below in both **interactive Markdown** and **original signed PDF** formats:
+
+| Document | Description | Online Markdown View | Official PDF File |
+| :--- | :--- | :---: | :---: |
+| 📘 **Final Project Report** | Complete 31-page academic report with Certificate, Declaration, 18 Chapters & Appendices A–E | [Inspect Report](docs/PROJECT_REPORT.md) | [📄 Download PDF](docs/Smart_Hospital_Management_System_Final_Report.pdf) |
+| 📋 **Software Requirements Specification (SRS)** | Formal 16-page SRS specification (`SC-SRS-001`) with FR-01 to FR-40, NFRs, DFDs & ERD | [Inspect SRS](docs/SRS.md) | [📄 Download PDF](docs/SmartCare_SRS.pdf) |
+| 🔬 **Research & Literature Review** | 15-page comparative literature review of HIS architecture, security & usability metrics | [Inspect Review](docs/RESEARCH_REVIEW.md) | [📄 Download PDF](docs/Smart_Hospital_Management_System_Research_Review.pdf) |
+| 📄 **One-Page Project Abstract** | Official department abstract sheet with keywords and core project overview | [Inspect Abstract](docs/ABSTRACT.md) | [📄 Download PDF](docs/SmartCare_Abstract.pdf) |
+| 🗓️ **13-Week Team Progress Reports** | Complete 13-week log with weekly submission boxes and direct code evidence | [Inspect Reports Hub](reports/README.md) | [📄 Download Reports PDF](docs/reports/6_Combined_Team_Weekly_Reports.pdf) |
+| 🏛️ **System Architecture & RBAC** | Layered MVC design, RBAC access control matrix, and sequence workflows | [Inspect Architecture](docs/SYSTEM_ARCHITECTURE.md) | Included in Report |
 
 ---
 
@@ -29,15 +48,14 @@
 
 ## 👥 Team Members & Module Distribution
 
-SmartCare was designed and implemented by a collaborative team of five engineers, each owning a core functional module:
-
-| Member | Assigned Module | Key Features & Responsibilities | Source Proof Link |
-| :--- | :--- | :--- | :--- |
-| **Devansh Mathur(24EARAD040)** *(Team Lead)* | **Module 1: Authentication, Admin & Security** | User authentication, BCrypt hashing, session tracking, RBAC filters (`AuthenticationFilter`, `AuthorizationFilter`), Admin dashboard, department directory, audit logs. | [`com.smarthospital.controller.AdminServlet`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/controller/AdminServlet.java) |
-| **Deepak Kumar(24EARAD035)** | **Module 2: Patient & Doctor Management** | Patient onboarding, profile management, medical record histories, doctor directory, qualification records, patient search filters. | [`com.smarthospital.controller.PatientServlet`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/controller/PatientServlet.java) |
-| **Hansraj Pandey(24EARAD056)** | **Module 3: Appointment & Consultation** | Appointment booking engine, doctor availability scheduling, double-booking prevention, clinical consultation notes, status lifecycle. | [`com.smarthospital.service.AppointmentService`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/service/AppointmentService.java) |
-| **Aryan Daware(24EARAD020)** | **Module 4: Pharmacy, Laboratory & Nursing** | Pharmaceutical stock inventory, low-stock warnings, multi-item prescription handling, lab test requests/results, patient vitals recording. | [`com.smarthospital.controller.MedicineServlet`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/controller/MedicineServlet.java) |
-| **Devkinandan Kumawat(24EARAD042)** | **Module 5: Billing, Admission, Reports & Feedback** | Invoice generation, payments tracking, bed allocation & room occupancy, patient admission/discharge, financial analytics, feedback. | [`com.smarthospital.service.BillingService`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/service/BillingService.java) |
+| Member | RTU Roll No | Assigned Module | Key Features & Responsibilities | Logged Hours | Source Proof Link |
+| :--- | :---: | :--- | :--- | :---: | :--- |
+| **Devansh Mathur** *(Lead)* | `24EARAD040` | **Module 1: Authentication, Admin & Security** | User authentication, BCrypt hashing, session tracking, RBAC filters (`AuthenticationFilter`, `AuthorizationFilter`), Admin dashboard, department directory, audit logs, Docker container. | 115.75 | [`com.smarthospital.controller.AdminServlet`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/controller/AdminServlet.java) |
+| **Deepak Kumar** | `24EARAD035` | **Module 2: Patient & Doctor Management** | Patient onboarding, profile management, medical record histories, doctor directory, qualification records, patient search filters. | 113.25 | [`com.smarthospital.controller.PatientServlet`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/controller/PatientServlet.java) |
+| **Hansraj Pandey** | `24EARAD056` | **Module 3: Appointment & Consultation** | Appointment booking engine, doctor availability scheduling, double-booking prevention, clinical consultation notes, status lifecycle. | 116.25 | [`com.smarthospital.service.AppointmentService`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/service/AppointmentService.java) |
+| **Aryan Daware** | `24EARAD020` | **Module 4: Pharmacy, Laboratory & Nursing** | Pharmaceutical stock inventory, low-stock warnings, multi-item prescription handling, lab test requests/results, patient vitals recording. | 112.00 | [`com.smarthospital.controller.MedicineServlet`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/controller/MedicineServlet.java) |
+| **Devkinandan Kumawat** | `24EARAD042` | **Module 5: Billing, Admission, Reports & Feedback** | Invoice generation, payments tracking, bed allocation & room occupancy, patient admission/discharge, financial analytics, feedback. | 116.75 | [`com.smarthospital.service.BillingService`](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/service/BillingService.java) |
+| **Team Total** | — | **Five Integrated Modules** | **Collaborative End-to-End Hospital Platform** | **574.00** | [View Full Codebase](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/src/main/java/com/smarthospital/) |
 
 ---
 
@@ -60,8 +78,6 @@ Every week's progress is formally logged with full mentor-reviewed notes and dir
 | **Week 11** | `14-09-2026 to 20-09-2026` | Testing (unit, functional, role-based) | [Week 11 Report](reports/week-11.md) | [https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/reports/week-11.md](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/reports/week-11.md) |
 | **Week 12** | `21-09-2026 to 27-09-2026` | Deployment (Docker, Render, cloud MySQL) | [Week 12 Report](reports/week-12.md) | [https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/reports/week-12.md](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/reports/week-12.md) |
 | **Week 13** | `28-09-2026 to 04-10-2026` | Report, PPT, demo video & viva preparation | [Week 13 Report](reports/week-13.md) | [https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/reports/week-13.md](https://github.com/mathurdevansh/Smart-Hospital-Management-System/blob/main/reports/week-13.md) |
-
-> 📑 **Master Reports Hub:** Visit [reports/README.md](reports/README.md) for the complete consolidated weekly reports dashboard.
 
 ---
 
@@ -183,16 +199,18 @@ The seed database pre-configures test credentials for all five system roles:
 
 ---
 
-## 📚 Project Documentation & Artifacts
+## 📚 Complete Project Documentation Hub
 
-- 📄 [Master Weekly Reports Directory (Weeks 1 to 13)](reports/README.md)
-- 📄 [Software Requirements Specification (SRS)](docs/SRS.md)
-- 📄 [Comprehensive Final Project Report](docs/PROJECT_REPORT.md)
-- 📄 [System Architecture & UML Design](docs/SYSTEM_ARCHITECTURE.md)
+- 📘 [Comprehensive Final Project Report (31 Pages)](docs/PROJECT_REPORT.md)
+- 📋 [Software Requirements Specification (SRS SC-SRS-001 - 16 Pages)](docs/SRS.md)
+- 🔬 [Research Review & Literature Analysis (15 Pages)](docs/RESEARCH_REVIEW.md)
+- 📄 [One-Page Project Abstract Sheet](docs/ABSTRACT.md)
+- 🏛️ [System Architecture & RBAC Design](docs/SYSTEM_ARCHITECTURE.md)
+- 🗓️ [13-Week Detailed Progress Reports Directory](reports/README.md)
 - 📂 [Archived Official Signed PDF Reports](docs/reports/)
 
 ---
 
-## 📄 License & Academic Integrity
-Developed as part of the **Java Web PBL (2026-27)** curriculum under the guidance of **Er. Ram Babu Buri**.  
-All rights reserved by **Team Nobita (PBL2627-AI&DS-A-031;)**.
+## 📄 Academic Integrity & Verification
+Submitted for academic evaluation under **Project Based Learning (PBL 2026–27)** at **Arya College of Engineering & I.T., Jaipur**, affiliated to **Rajasthan Technical University, Kota**.  
+Under the guidance of **Er. Ram Babu Buri** (Project Guide) and **Dr. Ashok Kumar Kajla** (Head of Department).
